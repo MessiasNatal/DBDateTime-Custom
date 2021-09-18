@@ -1,4 +1,4 @@
-{ -----------------------------------------------------------------------------
+﻿{ -----------------------------------------------------------------------------
   Author:    Messias Natal
   Date:      18-Setembro-2021
   Description: Componente Para Vincular o DataSource e DataField - FREE
@@ -58,9 +58,6 @@ end;
 destructor TDBDateTime.Destroy;
 begin
   FDataSource.DataSet := nil;
-  FDataSource.OnDataChange := nil;
-  FDataSource.OnStateChange := nil;
-  FDataSource.OnUpdateData := nil;
   Self.OnChange := nil;
   inherited;
 end;
@@ -79,13 +76,7 @@ begin
   begin
     Result := False;
     Self.Enabled := False;
-
-    FDataSource.DataSet := nil;
-    FDataSource.OnDataChange := nil;
-    FDataSource.OnStateChange := nil;
-    FDataSource.OnUpdateData := nil;
     Self.OnChange := nil;
-
     MessageDlg(System.SysUtils.Format(MSG_DATAFIELD_NOTFOUND,[DataField]),mtWarning,[mbok],0);
   end;
 end;
